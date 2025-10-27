@@ -7,7 +7,7 @@ name: Hello World Workflow 🌏
 # (keep in mind, the branch must be pushed to GitHub)
 # Each workflow can have as many triggers as you like.
 # Another common trigger is `pull_request`.
-on:
+true:
   - push
 
 jobs:
