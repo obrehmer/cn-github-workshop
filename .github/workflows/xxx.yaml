@@ -20,4 +20,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print version
-        run: echo "Version ${{ needs.build.outputs.version }}"
+        run: echo "Version ${{ needs.build.outputs.XXX666 }}"
