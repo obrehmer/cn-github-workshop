@@ -6,24 +6,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - name: Generate version
-        run: echo "1.2.3" > version.txt
-
-      - name: Save to artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: version-file
-          path: version.txt
+        id: 666
+        run: |
+          VERSION="1.2.3"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download version
-        uses: actions/download-artifact@v4
-        with:
-          name: version-file
-
-      - name: Read version
-        run: cat version.txt
+      - name: Print version
+        run: echo "Version ${{ needs.build.outputs.version }}"
