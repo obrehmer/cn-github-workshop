@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: npm run build
   test:
-    name: Build Project
+    name: Test Project
     runs-on: ubuntu-latest
     steps:
       # Remember we have to check out the repository first!
