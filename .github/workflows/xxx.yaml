@@ -10,7 +10,7 @@ jobs:
       version: ${{ steps.version.outputs.version }}
     steps:
       - name: Generate version
-        id: 666
+        id: XXX666
         run: |
           VERSION="1.2.3"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
