@@ -5,30 +5,25 @@ on:
 
 jobs:
   build:
-    name: Build Project
     runs-on: ubuntu-latest
     steps:
-      # Remember we have to check out the repository first!
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - name: Generate version
+        run: echo "1.2.3" > version.txt
 
-      # This step installs the dependencies
-      - name: Install dependencies
-        run: npm ci
+      - name: Save to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-file
+          path: version.txt
 
-      - name: Install dependencies
-        run: npm run build
-  test:
-    name: Test Project
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      # Remember we have to check out the repository first!
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - name: Download version
+        uses: actions/download-artifact@v4
+        with:
+          name: version-file
 
-      # This step installs the dependencies
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install dependencies
-        run: npm test
+      - name: Read version
+        run: cat version.txt
