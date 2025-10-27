@@ -1,4 +1,5 @@
 ---
+name: jobs vs. steps
 on:
   pull_request:
     branches:
