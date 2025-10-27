@@ -1,5 +1,5 @@
 ---
-name: Build on PR
+name: Build on PRXXX
 on:
   # This workflow will only run for pull requests targeting the main branch
   pull_request:
